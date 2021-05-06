@@ -1,0 +1,78 @@
+ 
+* {
+    box-sizing: border-box;
+    border: none;
+    font-family: 'Oswald', sans-serif;
+    margin: 0;
+    padding: 0;  
+    position: relative;
+    text-decoration: none;
+}
+
+:root {
+    --border-radius: 3px;
+}
+
+header {
+    /* background: lightcoral; */
+    border-bottom: 2px solid black;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#navBar {
+    /* background: yellow; */
+    color:blue;
+    display: flex;
+}
+
+.navBtns {
+    background: black;
+    border-bottom: 2px solid white;
+    color: white;
+    cursor: pointer;
+    padding: 20px;
+}
+
+.navBtns:hover{
+    background: slategray;
+
+}
+
+h1 {
+    color: green;
+    padding: 10px 10px 10px 5px;
+}
+
+input {
+    border: 1px solid gray;
+    border-radius: var(--border-radius);
+}
+
+.formBtns {
+    background: black;
+    border-radius: var(--border-radius);
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.formBtns:hover {
+    background: slategray;
+}
+
+#logInBackground {
+    background: rgba(100, 100, 100, .7);
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.credCard {
+    margin: 10px;
+    background: tan;
+    border: 2px solid black;
+    border-radius: var(--border-radius);
+    height: fit-content;
+    padding: 7px;
+}
