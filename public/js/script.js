@@ -1,9 +1,9 @@
 const logInSubmit = async (event) => {
     event.preventDefault();
-    console.log('log in')
+    console.log('log in');
 
-    const email = document.querySelector('#logInEmail');
-    const password = document.querySelector('#logInPassword');
+    const email = document.querySelector('#logInEmail').value.trim();
+    const password = document.querySelector('#logInPassword').value.trim();
 
     if(email && password){
         const res = await fetch('/api/users/login', {
@@ -18,7 +18,7 @@ const logInSubmit = async (event) => {
             document.location.replace('/');
         } else {
             //if time make a pop up
-            alert('Log In Failed')
+            alert('Log In Failed');
         };
     };
 };
@@ -27,9 +27,11 @@ const signUpSubmit = async (event) => {
     event.preventDefault();
     console.log('sign up')
 
-    const name = document.querySelector('#signUpName');
-    const email = document.querySelector('#signUPEmail');
-    const password = document.querySelector('#signUpPassword');
+    const name = document.querySelector('#signUpName').value.trim();
+    const email = document.querySelector('#signUpEmail').value.trim();
+    const password = document.querySelector('#signUpPassword').value.trim();
+
+    console.log(name, email, password)
 
     if(name && email && password){
         const res = await fetch('/api/users', {
@@ -44,26 +46,15 @@ const signUpSubmit = async (event) => {
             document.location.replace('/');
         } else {
             //if time make pop up
-            alert('Sign Up Failed')
+            alert('Sign Up Failed');
         };
     };
 };
 
 document
 .querySelector('#logInBtn')
-.addEventListener('submit', logInSubmit);
+.addEventListener('click', logInSubmit);
 
 document
 .querySelector('#signUpBtn')
-.addEventListener('submit', signUpSubmit);
-
-// document.querySelector('#logInBackground').addEventListener('submit', event => {
-//     if(event.target.id === '#logInBtn'){
-//         console.log('logIn')
-//         logInSubmit();
-//     };
-//     if(event.target.id === '#signUpBtn'){
-//         console.log('signIn')
-//         signUpSubmit();
-//     }
-// });
+.addEventListener('click', signUpSubmit);
