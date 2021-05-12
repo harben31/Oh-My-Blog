@@ -4,7 +4,7 @@ const logInSubmit = async (event) => {
 
     const email = document.querySelector('#logInEmail').value.trim();
     const password = document.querySelector('#logInPassword').value.trim();
-
+    
     if(email && password){
         const res = await fetch('/api/users/login', {
             method: 'POST',
@@ -58,3 +58,5 @@ document
 document
 .querySelector('#signUpBtn')
 .addEventListener('click', signUpSubmit);
+
+
