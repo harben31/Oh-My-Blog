@@ -11,7 +11,7 @@ Comment.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        body: {
+        comment_main_text: {
             type: DataTypes.TEXT,
         },
         post_id: {
@@ -33,8 +33,8 @@ Comment.init(
         sequelize,
         timestamps: false,
         freezeTableName: true,
-        modelName: 'comment',
-    },
+        modelName: 'comment'
+    }
 );
 
 module.exports = Comment;

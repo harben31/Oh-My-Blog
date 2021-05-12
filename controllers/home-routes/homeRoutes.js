@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
             },
             {
                 model: Comment,
-                attributes: ['body']
+                attributes: ['comment_main_text']
             },
         ],
     });
@@ -27,7 +27,37 @@ router.get('/', async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
-})
+});
+
+router.get('/dashboard', async (req, res) => {
+    try {
+        const postData = await Post.findAll({
+            where: {
+                user_id: req.session.user_id
+            },
+            include: [
+                {
+                    model: User,
+                    attributes: ['name', 'id'],
+                },
+                {
+                    model: Comment,
+                    attributes: ['comment_main_text']
+                },
+            ],
+        });
+
+        const post = postData.map((post) => post.get({ plain: true }));
+
+        res.render('dashboard', {
+            post,
+            logged_in: req.session.logged_in,
+        })
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 router.get('/login', async (req, res) => {
     try {

@@ -75,3 +75,96 @@ input {
     height: fit-content;
     padding: 7px;
 }
+
+#postContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+#postTitle{
+    margin: 5px;
+    width: 60%;
+}
+
+#postContent{
+    border: 1px solid black;
+    border-radius: var(--border-radius);
+}
+
+#postSubBtn{
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: var(--border-radius);
+}
+
+#createPostForm{
+    background: beige;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+#cardContainer{
+    display: flex;
+}
+
+.card{
+    border-radius: var(--border-radius);
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.cardHeader{
+    background: lightsalmon;
+    padding: 5px;
+    border-bottom:1px solid black; 
+}
+
+.postContent{
+    background: lightsteelblue;
+    border-radius: var(--border-radius);
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+}
+
+.commentWrap{
+    background: lightyellow;
+    border: 1px solid black;
+    border-radius: var(--border-radius);
+    margin: 5px;
+    /* padding: 5px; */
+    font-size: .8rem;
+}
+
+.commentText{
+    min-height: 30px;
+}
+
+.commentAuthor{
+    border-bottom: 1px solid black;
+    border-radius: var(--border-radius);
+    padding: 0px 5px;
+}
+
+.addComment{
+    border: 1px solid black;
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.commentMain{
+    /* border: 1px solid black; */
+    padding: 2px;
+    /* height:max-content; */
+    resize: unset;
+}
+
+.addCommentBtn{
+    margin: 5px;
+}

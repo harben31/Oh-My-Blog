@@ -1,6 +1,5 @@
 const logInSubmit = async (event) => {
     event.preventDefault();
-    console.log('log in');
 
     const email = document.querySelector('#logInEmail').value.trim();
     const password = document.querySelector('#logInPassword').value.trim();
@@ -25,13 +24,10 @@ const logInSubmit = async (event) => {
 
 const signUpSubmit = async (event) => {
     event.preventDefault();
-    console.log('sign up')
 
     const name = document.querySelector('#signUpName').value.trim();
     const email = document.querySelector('#signUpEmail').value.trim();
     const password = document.querySelector('#signUpPassword').value.trim();
-
-    console.log(name, email, password)
 
     if(name && email && password){
         const res = await fetch('/api/users', {

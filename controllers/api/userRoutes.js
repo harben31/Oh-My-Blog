@@ -4,7 +4,7 @@ const { User } = require('../../models');
 
     //creates new user
 router.post('/', async (req, res) => {
-    console.log('before try ', req.body)
+    // console.log('before try ', req.body)
     try {
         const userData = await User.create({email: req.body.email, password: req.body.password, name: req.body.name});
         
@@ -17,13 +17,13 @@ router.post('/', async (req, res) => {
             res.status(200).json(userData);
         });
     } catch (err) {
-        console.log("catch", err);
+        // console.log("catch", err);
         res.status(500).json(err);
     };
 });
 
 router.post('/login', async (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     try {
         const userData = await User.findOne({
             where: {
@@ -41,13 +41,27 @@ router.post('/login', async (req, res) => {
 
             req.session.email = userData.email; 
 
-            console.log('success');
+            // console.log('success');
             res.status(200).json(userData);
         });
 
     } catch (err) {
         res.status(500).json(err)
     };
+});
+
+router.post('/logout', (req, res) => {
+    try {
+        if(req.session.logged_in){
+            req.session.destroy(() => {
+                res.status(204).end();
+            })
+        } else {
+            res.status(404).json({ message: 'user not logged in' })
+        }
+    } catch (error) {
+        res.status(500).json(err);
+    };   
 });
 
 module.exports = router;
