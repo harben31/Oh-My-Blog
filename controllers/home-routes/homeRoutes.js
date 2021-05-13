@@ -22,6 +22,7 @@ router.get('/', async (req, res) => {
     res.render('homepage', {
         post,
         logged_in: req.session.logged_in,
+        isDash: false
     });
 
     } catch (err) {
@@ -52,6 +53,7 @@ router.get('/dashboard', async (req, res) => {
         res.render('dashboard', {
             post,
             logged_in: req.session.logged_in,
+            isDash: true,
         })
 
     } catch (err) {

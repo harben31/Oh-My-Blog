@@ -5,7 +5,7 @@
             <button class="navBtns" id="logOutBtn">LOGOUT</button>
         </nav>
         <h1>The Tech Blog!</h1>
-        {{log post.[0].user 'dashbroard!!!!!!!!!!'}}
+       {{log isDash logged_in post}}
         <h4><span id="userName">{{post.[0].user.name}}'s </span>page of really important opinions</h4>
     </header>
 <main id="postContainer">
@@ -17,7 +17,7 @@
         <button id="postSubBtn">Submit</button>
     </form>
     
-{{> post isDash=true}}
+{{> post logged_in = true}}
 
 </main>
 

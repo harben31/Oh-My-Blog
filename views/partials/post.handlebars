@@ -1,5 +1,5 @@
 <div id="cardContainer">
-    {{log '!!!!!!!this!!!!!!' isDash}}
+    {{!-- {{log '!!!!!!!this!!!!!!' }} --}}
         {{#each post as |post|}}
         <section class="card" data-post_id={{post.id}}>
             <div class="cardHeader">
@@ -19,8 +19,9 @@
                 {{/each}}
                 {{/if}}
             </div>
-            <button class="deletePost" data-post_id="{{post.id}}">delete <br> post</button>
-            {{#if isDash}}
+            {{log '!!!!!log in comment!!!!!' ../isDash}}
+            {{#if ../isDash}}
+            <button class="deletePost" data-post_id="{{post.id}}">delete post</button>
             <div class="addComment">
                 <textarea class="commentMain" cols="5" rows="2" placeholder="comment" data-post_id={{post.id}}></textarea>
                 <button class="addCommentBtn" data-post_id={{post.id}}>add</button>

@@ -76,13 +76,13 @@ const deletePost = async (event) => {
     const res = await fetch(`/api/posts/${post_id}`, {
         method: 'DELETE',
         headers: {
-            'Conetent-Type': 'application/json'
+            'Content-Type': 'application/json'
         }
     });
     console.log( '!!!!!!!!res del!!!!!', res);
     if(res.ok){
         console.log('what the hell');
-        // document.location.replace('/');
+        document.location.replace('/');
     } else {
         alert('something went wrong');
     };
@@ -114,16 +114,36 @@ const logOutFn = async () => {
     };
 };
 
-logInOutBtn = document.querySelectorAll('#logInBtn, #logOutBtn')
+// const logInOutBtn = document.querySelectorAll('#logInBtn, #logOutBtn')
+const main = document.querySelector('main');
+console.log('!!!main!!!!', main)
+const logInCard = document.querySelector('#logInCard');
+const signUpCard = document.querySelector('#signUpCard');
+card = document.querySelectorAll('.card');
 
 document.querySelector('#navBar').addEventListener('click', (event) => {
+    console.log(event.target);
     if(event.target.matches('#homeBtn')){
         document.location.replace('/');
-    } else if(event.target.matches('#logInBtn')){
-        document.location.replace('/login');
-    } else if(event.target.matches('#logOutBtn')){
+    } else if(event.target.matches('#logInNavBtn')){
+        // document.location.replace('/login');
+        //need to toggle this when login route is hit
+        logInCard.setAttribute('style', 'display: block');
+        signUpCard.setAttribute('style', 'display: none');
+        card.forEach((card) => {
+            card.setAttribute('style', 'z-index: -1')
+        });
+        main.setAttribute('style', 'background: rgba(100, 100, 100, .6)');
+    } else if(event.target.matches('#signUpNavBtn')){
+        signUpCard.setAttribute('style', 'display: block');
+        logInCard.setAttribute('style', 'display: none');
+        card.forEach((card) => {
+            card.setAttribute('style', 'z-index: -1')
+        });
+        main.setAttribute('style', 'background: rgba(100, 100, 100, .6)');
+    } else if(event.target.matches('#logOutNavBtn')){
         logOutFn();
     } else if(event.target.matches('#dashBtn')){
         document.location.replace('/dashboard');
     };
-})
+});

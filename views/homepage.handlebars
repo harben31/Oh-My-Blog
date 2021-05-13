@@ -1,16 +1,56 @@
+
 <header>
-        <nav id="navBar">
-            <button class="navBtns" id="homeBtn">HOME</button>
-            <button class="navBtns" id="dashBtn">DASHBOARD</button>
-            {{#if logged_in}}
-            <button class="navBtns" id="logOutBtn">LOGOUT</button>
-            {{else}}
-            <button class="navBtns" id="logInBtn">LOGIN</button>
-            {{/if}}
-        </nav>
-        <h1>The Tech Blog!</h1>
-    </header>
+    <nav id="navBar">
+        <button class="navBtns" id="homeBtn">HOME</button>
+        <button class="navBtns" id="dashBtn">DASHBOARD</button>
+        {{#if logged_in}}
+        <button class="navBtns" id="logOutNavBtn">LOGOUT</button>
+        {{else}}
+        <button class="navBtns" id="logInNavBtn">LOGIN</button>
+        <button class="navBtns" id="signUpNavBtn">SIGN UP</button>
+        {{/if}}
+        {{log '!!!!!homepage!!!!!' isDash}}
+    </nav>
+    <h1>The Tech Blog!</h1>
+</header>
+{{log isDash logged_in post}}
 <main id="postContainer">
+    <div id="logInCard" class="credCard">
+        <h3 id="logInBanner" class="logInBanner"> Log In Here </h3>
+        <form id="longInForm">
+            <div class="inputGroup">
+                <label for="logInEmail">Email:</label>
+                <input type="text" id="logInEmail" class="inputForm">
+            </div>
+            <div class="inputGroup">
+                <label for="logInPassword">Password:</label>
+                <input type="password" id="logInPassword" class="inputForm">
+            </div>
+            <div class="inputGroup">
+                <button type="submit" id="logInBtn" class="formBtns">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div id="signUpCard" class="credCard">
+        <form id="signUpForm">
+            <h3 id="signInBanner" class="logInBanner">Sign Up</h3>
+            <div class="inputGroup">
+                <label for="signUpName">Name:</label>
+                <input type="text" id="signUpName" class="inputForm">
+            </div>
+            <div class="inputGroup">
+                <label for="signUpEmail">Email:</label>
+                <input type="text" id="signUpEmail" class="inputForm">
+            </div>
+            <div class="inputGroup">
+                <label for="signUpPassword">Password:</label>
+                <input type="text" id="signUpPassword" class="inputForm">
+            </div>
+            <div class="inputGroup">
+                <button type="submit" id="signUpBtn" class="formBtns">Submit</button>
+            </div>
+        </form>
+    </div>
     {{#if logged_in}}
     <form id="createPostForm">
         <label for="postTitle">Title</label>
@@ -19,9 +59,11 @@
         <button id="postSubBtn">Submit</button>
     </form>
     {{/if}}
-
-    {{> post}}
+    <div id="cardArea">
+        {{> post}}
+    </div>
 
 </main>
 
 <script src="./js/home.js"></script>
+<script src="./js/login.js"></script>
