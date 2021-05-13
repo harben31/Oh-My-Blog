@@ -17,9 +17,8 @@ const postSubmit = async (event) => {
         if(res.ok){
             console.log('!!!!!!!! home.js!!!!!!!!', res, '!!!!!!!!!!');
             if(document.location.pathname === '/'){
-                // document.location.replace('/');
+                document.location.replace('/');
             } else if(document.location.pathname === 'dashboard'){
-
                 document.location.replace('/dashboard');
             };
    
@@ -38,7 +37,7 @@ if(document.querySelector('#createPostForm')){
     });
 };
 
-
+//adding comment
 const addCommentFn = async (event) => {
 
     const commentArr = document.querySelectorAll('.commentMain');
@@ -70,13 +69,34 @@ const addCommentFn = async (event) => {
     }
 };
 
+
+const deletePost = async (event) => {
+    const post_id = event.target.dataset.post_id;
+    
+    const res = await fetch(`/api/posts/${post_id}`, {
+        method: 'DELETE',
+        headers: {
+            'Conetent-Type': 'application/json'
+        }
+    });
+    console.log( '!!!!!!!!res del!!!!!', res);
+    if(res.ok){
+        console.log('what the hell');
+        // document.location.replace('/');
+    } else {
+        alert('something went wrong');
+    };
+};
+
 document
 .querySelector('#cardContainer')
 .addEventListener('click', (event) => {
     event.preventDefault(event);
     if(event.target.matches('.addCommentBtn')){
         addCommentFn(event)
-    };
+    } else if(event.target.matches('.deletePost')){
+        deletePost(event)
+    }
 });
 
 const logOutFn = async () => {

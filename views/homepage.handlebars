@@ -19,33 +19,9 @@
         <button id="postSubBtn">Submit</button>
     </form>
     {{/if}}
-    <div id="cardContainer">
-        {{#each post as |post|}}
-        <section class="card" data-post_id={{post.id}}>
-            <div class="cardHeader">
-                <h3 class="cardTitle">{{post.title}}</h3>
-                <h6 class="cardAuthor">by: {{post.user.name}}</h6>
-            </div>
-            <div class="postContent">
-                <p>{{post.main_text}}</p>
-            </div>
-            <div class="comments">
-                {{#if post.comments}}
-                {{#each post.comments as |comments|}}
-                    <div class="commentWrap">
-                        <p class='commentAuthor'>{{post.user.name}}</p>
-                        <p class='commentText'>{{comments.comment_main_text}}</p>
-                    </div>
-                {{/each}}
-                {{/if}}
-            </div>
-            <div class="addComment">
-                <textarea class="commentMain" cols="5" rows="2" placeholder="comment" data-post_id={{post.id}}></textarea>
-                <button class="addCommentBtn" data-post_id={{post.id}}>add</button>
-            </div>
-        </section>
-        {{/each}}
-    </div>
+
+    {{> post}}
+
 </main>
 
 <script src="./js/home.js"></script>
