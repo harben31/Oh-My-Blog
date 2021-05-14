@@ -79,23 +79,51 @@ const deletePost = async (event) => {
             'Content-Type': 'application/json'
         }
     });
-    console.log( '!!!!!!!!res del!!!!!', res);
+    
     if(res.ok){
-        console.log('what the hell');
-        document.location.replace('/');
+        document.location.replace('/dashboard');
     } else {
         alert('something went wrong');
     };
 };
 
+const updatePost = async (event, main_text) => {
+    console.log(main_text, 'update call !!!!!!!!');
+    const post_id = event.target.dataset.post_id;
+
+    const res = await fetch(`api/posts/${post_id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ main_text }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if(res.ok){
+        document.location.replace('/dashboard');
+    } else {
+        alert('something went wrong');
+    }
+};
+
 document
 .querySelector('#cardContainer')
 .addEventListener('click', (event) => {
+    const target = event.target;
+    const postContentNode = target.parentNode.previousElementSibling.firstElementChild;
     event.preventDefault(event);
-    if(event.target.matches('.addCommentBtn')){
-        addCommentFn(event)
-    } else if(event.target.matches('.deletePost')){
-        deletePost(event)
+    if(target.matches('.addCommentBtn')){
+        addCommentFn(event);
+    } else if(target.matches('.deletePost')){
+        deletePost(event);
+    } else if(target.matches('.updatePost')){
+        console.log(postContentNode, 'updatepost !!!!!!');
+        // console.log(target.parentNode.previousElementSibling.firstElementChild);
+        postContentNode.setAttribute('contenteditable', 'true');
+        target.nextElementSibling.setAttribute('style', 'display: block');
+    } else if(target.matches('.sendUpdatePost')){
+        // console.log(postContentNode.value, 'send update target !!!!!!');
+        updatePost(event, postContentNode.innerText);
     }
 });
 
@@ -116,16 +144,15 @@ const logOutFn = async () => {
 
 // const logInOutBtn = document.querySelectorAll('#logInBtn, #logOutBtn')
 const main = document.querySelector('main');
-console.log('!!!main!!!!', main)
 const logInCard = document.querySelector('#logInCard');
 const signUpCard = document.querySelector('#signUpCard');
-card = document.querySelectorAll('.card');
+const card = document.querySelectorAll('.card');
 
 document.querySelector('#navBar').addEventListener('click', (event) => {
-    console.log(event.target);
-    if(event.target.matches('#homeBtn')){
+    const target = event.target;
+    if(target.matches('#homeBtn')){
         document.location.replace('/');
-    } else if(event.target.matches('#logInNavBtn')){
+    } else if(target.matches('#logInNavBtn')){
         // document.location.replace('/login');
         //need to toggle this when login route is hit
         logInCard.setAttribute('style', 'display: block');
@@ -134,16 +161,16 @@ document.querySelector('#navBar').addEventListener('click', (event) => {
             card.setAttribute('style', 'z-index: -1')
         });
         main.setAttribute('style', 'background: rgba(100, 100, 100, .6)');
-    } else if(event.target.matches('#signUpNavBtn')){
+    } else if(target.matches('#signUpNavBtn')){
         signUpCard.setAttribute('style', 'display: block');
         logInCard.setAttribute('style', 'display: none');
         card.forEach((card) => {
             card.setAttribute('style', 'z-index: -1')
         });
         main.setAttribute('style', 'background: rgba(100, 100, 100, .6)');
-    } else if(event.target.matches('#logOutNavBtn')){
+    } else if(target.matches('#logOutNavBtn')){
         logOutFn();
-    } else if(event.target.matches('#dashBtn')){
+    } else if(target.matches('#dashBtn')){
         document.location.replace('/dashboard');
     };
 });

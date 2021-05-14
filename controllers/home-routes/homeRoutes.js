@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
             },
             {
                 model: Comment,
-                attributes: ['comment_main_text']
+                attributes: ['comment_main_text', 'createdAt']
             },
         ],
     });
@@ -43,7 +43,7 @@ router.get('/dashboard', async (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['comment_main_text']
+                    attributes: ['comment_main_text', 'createdAt']
                 },
             ],
         });

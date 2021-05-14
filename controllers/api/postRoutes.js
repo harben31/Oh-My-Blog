@@ -17,6 +17,26 @@ router.post('/', async (req, res) => {
     };
 });
 
+router.put('/:id', async (req, res) => {
+    console.log(req.body, '!!!!! put route');
+    try {
+        const postData = await Post.update(
+            {
+            ...req.body
+            },
+            {
+                where: {
+                id: req.params.id
+                }
+            });
+
+        res.status(200).json(postData);
+    } catch (err) {
+        res.status(500).json(err);
+        console.log(err);
+    }
+});
+
 router.post('/comments', async (req, res) => {
     console.log(req.body);
     try {

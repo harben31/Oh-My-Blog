@@ -6,6 +6,7 @@
     margin: 0;
     padding: 0;  
     position: relative;
+    resize: unset;
     text-decoration: none;
     /* z-index: 0; */
 }
@@ -109,12 +110,9 @@ input {
 #postContainer{
     align-content: center;
     display: flex;
-    height: 100vh;
-    /* flex-direction: column; */
+    flex-direction: column;
     justify-content: center;
     width: 100%;
-    /* opacity: .5; */
-    /* z-index: 2; */
 }
 
 .cardArea{
@@ -150,12 +148,14 @@ input {
     display: flex;
 }
 
+/* --------posts----------------- */
 .card{
     border-radius: var(--border-radius);
     border: 1px solid black;
     display: flex;
     flex-direction: column;
     margin: 10px;
+    min-width: 40%;
     /* z-index: -1; */
 }
 
@@ -168,11 +168,25 @@ input {
 .postContent{
     background: lightsteelblue;
     border-radius: var(--border-radius);
+    height: min-content;
     border: 1px solid black;
     padding: 5px;
     margin: 5px;
 }
 
+.postTextArea{
+    height: auto;
+    width: 100%;
+}
+
+.sendUpdatePost{
+    display: none;
+    min-height: min-content;
+    white-space: pre-wrap;
+}
+
+
+/* ----------comments ------------*/
 .commentWrap{
     background: lightyellow;
     border: 1px solid black;
