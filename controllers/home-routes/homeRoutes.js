@@ -5,6 +5,7 @@ const withAuth = require('../../utils/auth');
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
+        order: [['createdAt', 'DESC']],
         include: [
             {
                 model: User,
@@ -12,9 +13,10 @@ router.get('/', async (req, res) => {
             },
             {
                 model: Comment,
-                attributes: ['comment_main_text', 'createdAt']
+                attributes: ['comment_main_text', 'createdAt'],
+                // order: [['createdAt', 'DESC']],
             },
-        ],
+        ]
     });
     
     const post = postData.map((post) => post.get({ plain:true }));
@@ -26,6 +28,7 @@ router.get('/', async (req, res) => {
     });
 
     } catch (err) {
+        console.log(err)
         res.status(500).json(err);
     }
 });
@@ -33,6 +36,7 @@ router.get('/', async (req, res) => {
 router.get('/dashboard', async (req, res) => {
     try {
         const postData = await Post.findAll({
+            order: [['createdAt', 'DESC']],
             where: {
                 user_id: req.session.user_id
             },
@@ -43,7 +47,8 @@ router.get('/dashboard', async (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['comment_main_text', 'createdAt']
+                    attributes: ['comment_main_text', 'createdAt'],
+                    // order: [['createdAt', 'DESC']],
                 },
             ],
         });

@@ -2,11 +2,11 @@
         {{#each post as |post|}}
         <section class="card" data-post_id={{post.id}}>
             <div class="cardHeader">
-                <h3 class="cardTitle">{{post.title}}</h3>
-                <h6 class="cardAuthor">by: {{post.user.name}}</h6>
                 <div class="postDateWrap">
-                    <p class="postDate">{{format_date post.createdAt}}</p>
+                    <h3 class="cardTitle cardHeaderItems">{{post.title}}</h3>
+                    <h6 class="cardAuthor cardHeaderItems">by: {{post.user.name}}</h6>
                 </div>
+                <p class="postDate">{{format_date post.createdAt}}</p>
             </div>
             <div class="postContent">
                 <p class='postTextArea'>{{post.main_text}}</p>
@@ -22,17 +22,17 @@
                 {{#if post.comments}}
                 {{#each post.comments as |comments|}}
                     <div class="commentWrap">
-                        <p class='commentAuthor'>{{post.user.name}}</p>
-                        <p class='commentText'>{{comments.comment_main_text}}</p>
-                        <div class="commentsDateWrap">
-                            <p>{{format_date comments.createdAt}}</p>
+                        <div class="commentsHeaderWrap">
+                            <p class='commentAuthor'>{{post.user.name}} commented on {{format_date comments.createdAt}}</p>
                         </div>
+                        <p class='commentText'>{{comments.comment_main_text}}</p>
                     </div>
                 {{/each}}
                 {{/if}}
             </div>
             
             {{#if ../logged_in}}
+            <button class="addCommentToggle">add comment</button>
             <div class="addComment">
                 <textarea class="commentMain" cols="5" rows="2" placeholder="comment" data-post_id={{post.id}}></textarea>
                 <button class="addCommentBtn" data-post_id={{post.id}}>add</button>

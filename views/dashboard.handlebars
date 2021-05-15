@@ -2,18 +2,21 @@
         <nav id="navBar">
             <button class="navBtns" id="homeBtn">HOME</button>
             <button class="navBtns" id="dashBtn">DASHBOARD</button>
-            <button class="navBtns" id="logOutBtn">LOGOUT</button>
+            <button class="navBtns" id="logOutNavBtn">LOGOUT</button>
         </nav>
         <h1>The Tech Blog!</h1>
         <h4><span id="userName">{{post.[0].user.name}}'s </span>page of really important opinions</h4>
     </header>
 <main id="postContainer">
     <form id="createPostForm">
-        <h5>please share with us how you really feel</h5>
-        <label for="postTitle">Title</label>
-        <input id="postTitle" type="text">
-        <textarea id="postContent" cols="30" rows="5" placeholder="i am sooooo great and here is why..."></textarea>
-        <button id="postSubBtn">Submit</button>
+        <button id="toggleCreate">Make a Post</button>
+        <div id="createPostWrap">
+            <h5>please share with us how you really feel</h5>
+            <label for="postTitle">Title</label>
+            <input id="postTitle" type="text">
+            <textarea id="postContent" cols="30" rows="5" placeholder="i am sooooo great and here is why..."></textarea>
+            <button id="postSubBtn">Submit</button>
+        </div>
     </form>
     
 {{> post logged_in = true}}

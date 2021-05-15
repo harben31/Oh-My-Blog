@@ -13,6 +13,7 @@
 
 :root {
     --border-radius: 3px;
+    --border: 2px solid black;
 }
 
 body{
@@ -54,7 +55,7 @@ h1 {
 }
 
 input {
-    border: 1px solid gray;
+    border: var(--border);
     border-radius: var(--border-radius);
 }
 
@@ -86,14 +87,14 @@ input {
 .credCard {
     margin: 10px;
     background: tan;
-    border: 2px solid black;
+    border: var(--border);
     border-radius: var(--border-radius);
     display: none;
     height: fit-content;
     padding: 20px;
     padding-right: 30px;
-    position: absolute;
-    top: 10%;
+    position: fixed;
+    top: 40%;
     z-index: 2;  
 }
 
@@ -108,11 +109,24 @@ input {
 }
 
 #postContainer{
-    align-content: center;
+    align-items: center;
+    background-image: url('../images/code.jpg');
+    background-attachment: fixed;
+    background-repeat: repeat-x;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
+}
+
+#modalWrap{
+    /* align-items: center; */
+    display: flex;
+    /* height: 100vh; */
+    justify-content: center;
+    /* position: fixed; */
+    /* width: 100%; */
+    z-index: 1;
 }
 
 .cardArea{
@@ -126,50 +140,63 @@ input {
 }
 
 #postContent{
-    border: 1px solid black;
+    border: var(--border);
     border-radius: var(--border-radius);
 }
 
 #postSubBtn{
     margin: 5px;
-    border: 1px solid black;
+    border: var(--border);
     border-radius: var(--border-radius);
 }
 
 #createPostForm{
     background: beige;
-    width: 100vw;
     display: flex;
     flex-direction: column;
     padding: 10px;
+    width: 100vw;
+}
+
+#createPostWrap{
+    display: none;
+    flex-direction: column;
 }
 
 #cardContainer{
     display: flex;
+    flex-direction: column;
 }
 
 /* --------posts----------------- */
 .card{
+    /* align-content: center; */
+    background: rgb(28, 31, 34);
     border-radius: var(--border-radius);
-    border: 1px solid black;
+    border: var(--border);
     display: flex;
     flex-direction: column;
-    margin: 10px;
-    min-width: 40%;
+    margin: 30px;
+    padding: 5px;
+    /* min-width: 40%; */
     /* z-index: -1; */
 }
 
 .cardHeader{
-    background: lightsalmon;
+    background: rgb(240, 162, 123);
+    display: flex;
+    justify-content: space-between;
     padding: 5px;
-    border-bottom:1px solid black; 
+    border: var(--border); 
+    border-radius: var(--border-radius);
 }
 
 .postContent{
-    background: lightsteelblue;
+    background: rgb(82, 85, 88);
     border-radius: var(--border-radius);
+    color: white;
     height: min-content;
-    border: 1px solid black;
+    border: var(--border);
     padding: 5px;
     margin: 5px;
 }
@@ -187,40 +214,56 @@ input {
 
 
 /* ----------comments ------------*/
-.commentWrap{
-    background: lightyellow;
-    border: 1px solid black;
+.addCommentToggle{
+    align-self: center;
     border-radius: var(--border-radius);
-    margin: 5px;
-    /* padding: 5px; */
-    font-size: .8rem;
-}
-
-.commentText{
-    min-height: 30px;
-}
-
-.commentAuthor{
-    border-bottom: 1px solid black;
-    border-radius: var(--border-radius);
-    padding: 0px 5px;
+    cursor: pointer;
+    height: 30px;
+    margin-bottom: 5px;
+    width: 30%;
 }
 
 .addComment{
-    border: 1px solid black;
     border-radius: var(--border-radius);
-    display: flex;
+    /* display: flex; */
+    display: none;
     flex-direction: column;
     margin: 5px;
 }
 
+.commentWrap{
+    background: lightyellow;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    font-size: .8rem;
+    margin: 5px ;
+    /* padding: 5px; */
+}
+
+.commentText{
+    min-height: 30px;
+    padding: 5px;
+}
+
+.commentAuthor{
+    background:rgb(155, 159, 163);
+    border-bottom: var(--border);
+    /* border-radius: var(--border-radius); */
+    padding: 0px 5px;
+}
+
 .commentMain{
     /* border: 1px solid black; */
+    border: 1px solid black;
+    border-radius: var(--border-radius);
     padding: 2px;
     /* height:max-content; */
     resize: unset;
 }
 
 .addCommentBtn{
+    align-self: center;
+    cursor: pointer;
     margin: 5px;
+    width: 30%;
 }

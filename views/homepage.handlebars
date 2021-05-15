@@ -13,54 +13,47 @@
     <h1>The Tech Blog!</h1>
 </header>
 <main id="postContainer">
-    <div id="logInCard" class="credCard">
-        <h3 id="logInBanner" class="logInBanner"> Log In Here </h3>
-        <form id="longInForm">
-            <div class="inputGroup">
-                <label for="logInEmail">Email:</label>
-                <input type="text" id="logInEmail" class="inputForm">
-            </div>
-            <div class="inputGroup">
-                <label for="logInPassword">Password:</label>
-                <input type="password" id="logInPassword" class="inputForm">
-            </div>
-            <div class="inputGroup">
-                <button type="submit" id="logInBtn" class="formBtns">Submit</button>
-            </div>
-        </form>
+    <div id="modalWrap">
+        <div id="logInCard" class="credCard">
+            <h3 id="logInBanner" class="logInBanner"> Log In Here </h3>
+            <form id="longInForm">
+                <div class="inputGroup">
+                    <label for="logInEmail">Email:</label>
+                    <input type="text" id="logInEmail" class="inputForm">
+                </div>
+                <div class="inputGroup">
+                    <label for="logInPassword">Password:</label>
+                    <input type="password" id="logInPassword" class="inputForm">
+                </div>
+                <div class="inputGroup">
+                    <button type="submit" id="logInBtn" class="formBtns">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div id="signUpCard" class="credCard">
+            <form id="signUpForm">
+                <h3 id="signInBanner" class="logInBanner">Sign Up</h3>
+                <div class="inputGroup">
+                    <label for="signUpName">Name:</label>
+                    <input type="text" id="signUpName" class="inputForm">
+                </div>
+                <div class="inputGroup">
+                    <label for="signUpEmail">Email:</label>
+                    <input type="text" id="signUpEmail" class="inputForm">
+                </div>
+                <div class="inputGroup">
+                    <label for="signUpPassword">Password:</label>
+                    <input type="text" id="signUpPassword" class="inputForm">
+                </div>
+                <div class="inputGroup">
+                    <button type="submit" id="signUpBtn" class="formBtns">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div id="cardArea">
+            {{> post}}
+        </div>
     </div>
-    <div id="signUpCard" class="credCard">
-        <form id="signUpForm">
-            <h3 id="signInBanner" class="logInBanner">Sign Up</h3>
-            <div class="inputGroup">
-                <label for="signUpName">Name:</label>
-                <input type="text" id="signUpName" class="inputForm">
-            </div>
-            <div class="inputGroup">
-                <label for="signUpEmail">Email:</label>
-                <input type="text" id="signUpEmail" class="inputForm">
-            </div>
-            <div class="inputGroup">
-                <label for="signUpPassword">Password:</label>
-                <input type="text" id="signUpPassword" class="inputForm">
-            </div>
-            <div class="inputGroup">
-                <button type="submit" id="signUpBtn" class="formBtns">Submit</button>
-            </div>
-        </form>
-    </div>
-    {{#if logged_in}}
-    <form id="createPostForm">
-        <label for="postTitle">Title</label>
-        <input id="postTitle" type="text">
-        <textarea id="postContent" cols="30" rows="10" placeholder="i am sooooo great and here is why..."></textarea>
-        <button id="postSubBtn">Submit</button>
-    </form>
-    {{/if}}
-    <div id="cardArea">
-        {{> post}}
-    </div>
-
 </main>
 
 <script src="./js/home.js"></script>
