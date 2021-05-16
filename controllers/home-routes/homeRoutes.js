@@ -14,7 +14,6 @@ router.get('/', async (req, res) => {
             {
                 model: Comment,
                 attributes: ['comment_main_text', 'createdAt'],
-                // order: [['createdAt', 'DESC']],
             },
         ]
     });
@@ -28,12 +27,11 @@ router.get('/', async (req, res) => {
     });
 
     } catch (err) {
-        console.log(err)
         res.status(500).json(err);
     }
 });
 
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
             order: [['createdAt', 'DESC']],
@@ -48,7 +46,6 @@ router.get('/dashboard', async (req, res) => {
                 {
                     model: Comment,
                     attributes: ['comment_main_text', 'createdAt'],
-                    // order: [['createdAt', 'DESC']],
                 },
             ],
         });
@@ -63,7 +60,6 @@ router.get('/dashboard', async (req, res) => {
 
     } catch (err) {
         res.status(500).json(err);
-        console.log(err)
     }
 });
 

@@ -30,7 +30,6 @@ if(document.querySelector('#createPostForm')){
         const target = event.target;
 
         if(target.matches('#toggleCreate')){
-            console.log('togglecreate');
             document.querySelector('#createPostWrap').setAttribute('style', 'display: flex');
             document.querySelector('#toggleCreate').setAttribute('style', 'display: none');
         } else if(target.matches('#postSubBtn')){
@@ -64,8 +63,6 @@ const addCommentFn = async (event) => {
         });
 
         if(res.ok){
-            console.log(document.location.pathname);
-            // document.location.replace('/');
             if(document.location.pathname === '/'){
                 document.location.replace('/');
             } else if(document.location.pathname === '/dashboard'){
@@ -96,7 +93,6 @@ const deletePost = async (event) => {
 };
 
 const updatePost = async (event, main_text) => {
-    console.log(main_text, 'update call !!!!!!!!');
     const post_id = event.target.dataset.post_id;
 
     const res = await fetch(`api/posts/${post_id}`, {
@@ -113,7 +109,7 @@ const updatePost = async (event, main_text) => {
         alert('something went wrong');
     }
 };
-console.log(document.location.pathname === '/dashboard');
+
 
 if(document.location.pathname === '/dashboard'){
     const cards = document.querySelectorAll('.card');
@@ -127,26 +123,20 @@ document
 .querySelector('#cardContainer')
 .addEventListener('click', (event) => {
     const target = event.target;
-    console.log(target);
    
     event.preventDefault(event);
     if((target.matches('.card') || target.matches('.cardHeader') || target.matches('.postTextArea')) && document.location.pathname === '/dashboard'){
-        console.log('.card');
-        console.log(target.childNodes);
         const cards = document.querySelectorAll('.card');
 
         cards.forEach((card) => {
             if(target.dataset.post_id === card.getAttribute('data-post_id') 
             || target.parentNode.dataset.post_id === card.getAttribute('data-post_id')
             || target.parentNode.parentNode.dataset.post_id === card.getAttribute('data-post_id')){
-                console.log('post id ', card.childNodes);
                 card.childNodes[5].setAttribute('style', 'display: flex');
-                // card.childNodes[9].setAttribute('style', 'display: flex');
                 card.setAttribute('style', 'cursor: unset');
             }
         });
     } else if(target.matches('.addCommentToggle')){
-        console.log(target.parentNode.parentNode.childNodes[7]);
         target.parentNode.parentNode.childNodes[9].setAttribute('style', 'display: flex');
         target.setAttribute('style', 'display: none');
     } else if(target.matches('.addCommentBtn')){
@@ -159,7 +149,6 @@ document
         target.parentNode.previousElementSibling.firstElementChild.setAttribute('contenteditable', 'true');
         target.nextElementSibling.setAttribute('style', 'display: block');
     } else if(target.matches('.sendUpdatePost')){
-        // console.log(postContentNode.value, 'send update target !!!!!!');
         updatePost(event, target.parentNode.previousElementSibling.firstElementChild.innerText);
     }
 });

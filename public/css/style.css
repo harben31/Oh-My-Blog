@@ -1,37 +1,32 @@
  
 * {
-    box-sizing: border-box;
     border: none;
+    box-sizing: border-box;
     font-family: 'Oswald', sans-serif;
     margin: 0;
     padding: 0;  
     position: relative;
     resize: unset;
     text-decoration: none;
-    /* z-index: -1; */
 }
 
 :root {
-    --border-radius: 3px;
     --border: 2px solid black;
+    --border-radius: 3px;
 }
 
 body{
-    /* display: flex; */
     flex-direction: column;
     height: 100vh;
-    /* width: 100%; */
 }
 
 header {
-    /* background: lightcoral; */
     border-bottom: 2px solid black;
     display: flex;
     flex-direction: column-reverse;
 }
 
 #navBar {
-    /* background: yellow; */
     color:blue;
     display: flex;
     width: 100vw;
@@ -76,12 +71,12 @@ input {
 }
 
 .credCard {
-    margin: 10px;
     background: tan;
     border: var(--border);
     border-radius: var(--border-radius);
     display: none;
     height: fit-content;
+    margin: 10px;
     padding: 20px;
     padding-right: 30px;
     position: fixed;
@@ -94,16 +89,16 @@ input {
 }
 
 .inputForm{
-    margin: 5px 10px;
     height: 30px;
+    margin: 5px 10px;
     width: 100%;
 }
 
 #postContainer{
     align-items: center;
     align-self: flex-start;
-    background-image: url('../images/code.jpg');
     background-attachment: fixed;
+    background-image: url('../images/code.jpg');
     background-repeat: repeat-x;
     display: flex;
     flex-direction: column;
@@ -113,12 +108,8 @@ input {
 }
 
 #modalWrap{
-    /* align-items: center; */
     display: flex;
-    /* height: 100vh; */
     justify-content: center;
-    /* position: fixed; */
-    /* width: 100%; */
     z-index: 1;
 }
 
@@ -128,7 +119,6 @@ input {
 
 /*----------- creating/submitting post form -----------*/
 #toggleCreate{
-    /* background: salmon; */
     border: var(--border);
     border-radius: var(--border-radius);
     cursor: pointer;
@@ -145,7 +135,6 @@ input {
 }
 
 #createPostWrap{
-    /* align-items: center; */
     display: none;
     flex-direction: column;
     padding: 0 50px;
@@ -181,36 +170,33 @@ input {
 }
 
 .card{
-    /* align-content: center; */
     background: rgb(28, 31, 34);
-    border-radius: var(--border-radius);
     border: var(--border);
+    border-radius: var(--border-radius);
     display: flex;
     flex-direction: column;
     margin: 30px;
     padding: 5px;
-    /* z-index: -1; */
 }
 
 
 .cardHeader{
     background: rgb(240, 162, 123);
+    border: var(--border); 
+    border-radius: var(--border-radius);
     display: flex;
     justify-content: space-between;
     padding: 5px;
-    border: var(--border); 
-    border-radius: var(--border-radius);
-    /* z-index: -1; */
 }
 
 .postContent{
     background: rgb(82, 85, 88);
+    border: var(--border);
     border-radius: var(--border-radius);
     color: white;
     height: min-content;
-    border: var(--border);
-    padding: 5px;
     margin: 5px;
+    padding: 5px;
 }
 
 .postTextArea{
@@ -246,7 +232,6 @@ input {
 .addComment{
     border-radius: var(--border-radius);
     display: none;
-    /* display: flex; */
     flex-direction: column;
     margin: 5px;
 }
@@ -257,7 +242,6 @@ input {
     border-radius: var(--border-radius);
     font-size: .8rem;
     margin: 5px ;
-    /* padding: 5px; */
 }
 
 .commentText{
@@ -268,16 +252,13 @@ input {
 .commentAuthor{
     background:rgb(155, 159, 163);
     border-bottom: var(--border);
-    /* border-radius: var(--border-radius); */
     padding: 0px 5px;
 }
 
 .commentMain{
-    /* border: 1px solid black; */
     border: 1px solid black;
     border-radius: var(--border-radius);
     padding: 2px;
-    /* height:max-content; */
     resize: unset;
 }
 

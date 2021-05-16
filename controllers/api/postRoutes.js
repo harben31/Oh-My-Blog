@@ -4,7 +4,7 @@ const { Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //create post
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const newPost = await Post.create({
             ...req.body,
@@ -17,8 +17,7 @@ router.post('/', async (req, res) => {
     };
 });
 
-router.put('/:id', async (req, res) => {
-    console.log(req.body, '!!!!! put route');
+router.put('/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.update(
             {
@@ -33,30 +32,23 @@ router.put('/:id', async (req, res) => {
         res.status(200).json(postData);
     } catch (err) {
         res.status(500).json(err);
-        console.log(err);
     }
 });
 
-router.post('/comments', async (req, res) => {
-    console.log(req.body);
+router.post('/comments', withAuth, async (req, res) => {
     try {
-        console.log('look it works');
-        console.log(req.session.user_id);
         const newComment = await Comment.create({
             ...req.body,
             user_id: req.session.user_id
         });
 
-        console.log(newComment);
         res.status(200).json(newComment);
     } catch (err) {
         res.status(500).json(err);
-        console.log(err)
     }   
 });
 
-router.delete('/:id', async (req, res) => {
-    // console.log(req.params.id, '!!!!!!!!!!del orute');
+router.delete('/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.destroy({
             where: {
@@ -66,7 +58,7 @@ router.delete('/:id', async (req, res) => {
         });
 
         if(!postData){
-            res.status(404).json({ message: 'by some weird error we cannot find this post'})
+            res.status(404).json({ message: 'post not found'})
         };
 
         res.status(200).end();
