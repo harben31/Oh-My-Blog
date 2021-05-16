@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { load } = require('dotenv');
 const { Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
