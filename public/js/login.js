@@ -1,5 +1,5 @@
 const logInSubmit = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
 
     const email = document.querySelector('#logInEmail').value.trim();
     const password = document.querySelector('#logInPassword').value.trim();
@@ -48,8 +48,17 @@ const signUpSubmit = async (event) => {
 };
 
 document
-.querySelector('#logInBtn')
-.addEventListener('click', logInSubmit);
+.querySelector('#logInCard')
+.addEventListener('click', (event) => {
+    event.preventDefault();
+    const target = event.target;
+    if(target.matches('#logInBtn')){
+        logInSubmit()
+    } else if(target.matches('#toSignUp')){
+        document.querySelector('#logInCard').setAttribute('style', 'display: none');
+        document.querySelector('#signUpCard').setAttribute('style', 'display: flex');
+    }
+});
 
 document
 .querySelector('#signUpBtn')

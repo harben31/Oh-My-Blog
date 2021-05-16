@@ -14,7 +14,11 @@
 </header>
 <main id="postContainer">
     <div id="modalWrap">
-        <div id="logInCard" class="credCard">
+        {{# if needLogIn}}
+        <div id="logInCard" class="credCard" style="display: block">
+        {{else}}
+        <div id="logInCard" class="credCard" style="display: none">
+        {{/if}}
             <h3 id="logInBanner" class="logInBanner"> Log In Here </h3>
             <form id="longInForm">
                 <div class="inputGroup">
@@ -27,10 +31,11 @@
                 </div>
                 <div class="inputGroup">
                     <button type="submit" id="logInBtn" class="formBtns">Submit</button>
+                    <p>Not A member? <a id="toSignUp" href="#">Sign Up</a></p>
                 </div>
             </form>
         </div>
-        <div id="signUpCard" class="credCard">
+        <div id="signUpCard" class="credCard" style="display: none">
             <form id="signUpForm">
                 <h3 id="signInBanner" class="logInBanner">Sign Up</h3>
                 <div class="inputGroup">

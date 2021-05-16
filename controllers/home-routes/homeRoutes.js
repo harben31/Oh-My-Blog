@@ -65,7 +65,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
 router.get('/login', async (req, res) => {
     try {
-        res.render('login');
+        res.render('homepage', {
+            needLogIn: true
+        });
         
     } catch (err) {
         res.status(500).json(err);
