@@ -13,13 +13,15 @@ const port = process.env.PORT || 3001;
 
 const sess = {
     secret: 'secret goes here or .env prop',
-    cookie: {},
+    cookie: {  },
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
         db: sequelize
     })
 };
+
+console.log(sess);
 
 app.use(session(sess));
 

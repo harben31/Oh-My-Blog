@@ -16,6 +16,9 @@
                 <button class="deletePost" data-post_id="{{post.id}}">delete post</button>
                 <button class="updatePost" data-post_id="{{post.id}}">edit post</button>
                 <button class="sendUpdatePost" data-post_id="{{post.id}}">update</button>
+                {{#if ../logged_in}}
+                <button class="addCommentToggle">add comment</button>
+                 {{/if}}
             </div>
             {{/if}}
             <div class="comments">
@@ -30,14 +33,10 @@
                 {{/each}}
                 {{/if}}
             </div>
-            
-            {{#if ../logged_in}}
-            <button class="addCommentToggle">add comment</button>
             <div class="addComment">
                 <textarea class="commentMain" cols="5" rows="2" placeholder="comment" data-post_id={{post.id}}></textarea>
                 <button class="addCommentBtn" data-post_id={{post.id}}>add</button>
             </div>
-            {{/if}}
         </section>
         {{/each}}
     </div>

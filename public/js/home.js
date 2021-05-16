@@ -23,13 +23,11 @@ const postSubmit = async (event) => {
 };
 
 if(document.querySelector('#createPostForm')){
-    console.log('create post form ');
     document
-    .querySelector('#createPostForm')
+    .querySelector('#postContainer')
     .addEventListener('click', (event) => {
         event.preventDefault();
         const target = event.target;
-        console.log(target);
 
         if(target.matches('#toggleCreate')){
             console.log('togglecreate');
@@ -115,24 +113,50 @@ const updatePost = async (event, main_text) => {
         alert('something went wrong');
     }
 };
+console.log(document.location.pathname === '/dashboard');
+
+if(document.location.pathname === '/dashboard'){
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach((card) => {
+        card.setAttribute('style', 'cursor: pointer');
+    })
+}
 
 document
 .querySelector('#cardContainer')
 .addEventListener('click', (event) => {
     const target = event.target;
-    // const postContentNode = target.parentNode.previousElementSibling.firstElementChild;
+    console.log(target);
+   
     event.preventDefault(event);
-    if(target.matches('.addCommentToggle')){
-        target.nextElementSibling.setAttribute('style', 'display:flex');
+    if((target.matches('.card') || target.matches('.cardHeader') || target.matches('.postTextArea')) && document.location.pathname === '/dashboard'){
+        console.log('.card');
+        console.log(target.childNodes);
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach((card) => {
+            if(target.dataset.post_id === card.getAttribute('data-post_id') 
+            || target.parentNode.dataset.post_id === card.getAttribute('data-post_id')
+            || target.parentNode.parentNode.dataset.post_id === card.getAttribute('data-post_id')){
+                console.log('post id ', card.childNodes);
+                card.childNodes[5].setAttribute('style', 'display: flex');
+                // card.childNodes[9].setAttribute('style', 'display: flex');
+                card.setAttribute('style', 'cursor: unset');
+            }
+        });
+    } else if(target.matches('.addCommentToggle')){
+        console.log(target.parentNode.parentNode.childNodes[7]);
+        target.parentNode.parentNode.childNodes[9].setAttribute('style', 'display: flex');
         target.setAttribute('style', 'display: none');
     } else if(target.matches('.addCommentBtn')){
         addCommentFn(event);
     } else if(target.matches('.deletePost')){
         deletePost(event);
     } else if(target.matches('.updatePost')){
-        console.log(target.parentNode.previousElementSibling.firstElementChild, 'updatepost !!!!!!');
-        // console.log(target.parentNode.previousElementSibling.firstElementChild);
-        postContentNode.setAttribute('contenteditable', 'true');
+        target.setAttribute('style', 'display: none');
+        target.nextElementSibling.setAttribute('style', 'display: block');
+        target.parentNode.previousElementSibling.firstElementChild.setAttribute('contenteditable', 'true');
         target.nextElementSibling.setAttribute('style', 'display: block');
     } else if(target.matches('.sendUpdatePost')){
         // console.log(postContentNode.value, 'send update target !!!!!!');
