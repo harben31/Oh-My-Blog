@@ -16,6 +16,7 @@ router.post('/', withAuth, async (req, res) => {
     };
 });
 
+//updates users post
 router.put('/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.update(
@@ -34,6 +35,7 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 });
 
+//create comment
 router.post('/comments', withAuth, async (req, res) => {
     try {
         const newComment = await Comment.create({
@@ -47,6 +49,7 @@ router.post('/comments', withAuth, async (req, res) => {
     }   
 });
 
+//delete users post
 router.delete('/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.destroy({

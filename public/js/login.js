@@ -1,5 +1,4 @@
-const logInSubmit = async (event) => {
-    // event.preventDefault();
+const logInSubmit = async () => {
 
     const email = document.querySelector('#logInEmail').value.trim();
     const password = document.querySelector('#logInPassword').value.trim();
@@ -16,7 +15,6 @@ const logInSubmit = async (event) => {
         if(res.ok){
             document.location.replace('/');
         } else {
-            //if time make a pop up
             alert('Log In Failed');
         };
     };
@@ -41,7 +39,6 @@ const signUpSubmit = async (event) => {
         if(res.ok){
             document.location.replace('/');
         } else {
-            //if time make pop up
             alert('Sign Up Failed');
         };
     };
@@ -54,6 +51,7 @@ document
     const target = event.target;
     if(target.matches('#logInBtn')){
         logInSubmit()
+        //toggles to sign up card from log in card
     } else if(target.matches('#toSignUp')){
         document.querySelector('#logInCard').setAttribute('style', 'display: none');
         document.querySelector('#signUpCard').setAttribute('style', 'display: flex');

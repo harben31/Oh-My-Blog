@@ -2,15 +2,16 @@ const User = require('./User');
 const Comment = require('./Comment');
 const Post = require('./Post');
 
+//associates posts with the user
 User.hasMany(Post, {
     foreignKey: 'user_id',
-    //when USER is deleted all users POSTs will be deleted?
     onDelete: 'CASCADE'
 });
 Post.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
+//associates comments with user
 User.hasMany(Comment, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
@@ -19,11 +20,11 @@ Comment.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
+//associates comments with posts
 Post.hasMany(Comment, {
     foreignKey: 'post_id',
     onDelete: 'CASCADE'
 });
-
 Comment.belongsTo(Post, {
     foreignKey: 'post_id',
 });

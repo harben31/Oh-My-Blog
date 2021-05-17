@@ -14,11 +14,13 @@
 </header>
 <main id="postContainer">
     <div id="modalWrap">
+        {{!-- if the user is redirected from the login route the log in modal will render --}}
         {{# if needLogIn}}
         <div id="logInCard" class="credCard" style="display: block">
         {{else}}
         <div id="logInCard" class="credCard" style="display: none">
         {{/if}}
+        {{!-- log in modal --}}
             <h3 id="logInBanner" class="logInBanner"> Log In Here </h3>
             <form id="longInForm">
                 <div class="inputGroup">
@@ -35,6 +37,7 @@
                 </div>
             </form>
         </div>
+        {{!-- sign up modal --}}
         <div id="signUpCard" class="credCard" style="display: none">
             <form id="signUpForm">
                 <h3 id="signInBanner" class="logInBanner">Sign Up</h3>

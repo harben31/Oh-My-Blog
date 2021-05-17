@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { User, Comment, Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+//gets all posts by all users and passes the data to the homepage handlebar file
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
@@ -31,6 +32,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+//finds only users posts and passes the  data to the dashboard handlebar
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
@@ -63,6 +65,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     }
 });
 
+//redirects user from url/login to home page w/ and telling the handlebars the user needs to log in
 router.get('/login', async (req, res) => {
     try {
         res.render('homepage', {

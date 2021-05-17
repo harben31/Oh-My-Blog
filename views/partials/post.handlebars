@@ -1,4 +1,5 @@
 <div id="cardContainer">
+        {{!-- renders posts with information passed in from the controller--}}
         {{#each post as |post|}}
         <section class="card" data-post_id={{post.id}}>
             <div class="cardHeader">
@@ -11,6 +12,7 @@
             <div class="postContent">
                 <p class='postTextArea'>{{post.main_text}}</p>
             </div>
+            {{!-- only allows these buttons to appear on the dashboard page --}}
             {{#if ../isDash}}
             <div class="delUpdBtns">
                 <button class="deletePost" data-post_id="{{post.id}}">delete post</button>
@@ -18,11 +20,12 @@
                 <button class="sendUpdatePost" data-post_id="{{post.id}}">update</button>
             </div>
             {{/if}} 
+            {{!-- allows users to add a comment on either home page or dashboard page only if they are logged in --}}
             {{#if ../logged_in}}
             <button class="addCommentToggleHome">add comment</button>
             {{/if}}
             <div class="comments">
-                {{log post.comments}}
+                {{!-- only tries to render comments if there is comments to render --}}
                 {{#if post.comments}}
                 {{#each post.comments as |comments|}}
                     <div class="commentWrap">
@@ -34,6 +37,7 @@
                 {{/each}}
                 {{/if}}
             </div>
+            {{!-- only allows user to view the comment controls if they are logged in --}}
             {{#if ../logged_in}}
             <div class="addComment">
                 <textarea class="commentMain" cols="5" rows="2" placeholder="comment" data-post_id={{post.id}}></textarea>
