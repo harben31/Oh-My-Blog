@@ -170,6 +170,7 @@ input {
 }
 
 .card{
+    /* align-items: center; */
     background: rgb(28, 31, 34);
     border: var(--border);
     border-radius: var(--border-radius);
@@ -209,6 +210,12 @@ input {
     display: none;
 }
 
+.postBtnsWrap{
+    display: flex;
+    justify-content: center;
+    z-index: 0
+}
+
 .deletePost,
 .updatePost,
 .sendUpdatePost,
@@ -219,6 +226,14 @@ input {
     margin: 5px 10px;
     min-height: 55px; 
     width: 70px;
+}
+
+.addCommentToggleHome{
+    align-self: center;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    height: 30px;
+    width: 40%;
 }
 
 

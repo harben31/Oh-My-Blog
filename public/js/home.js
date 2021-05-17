@@ -123,12 +123,16 @@ document
 .querySelector('#cardContainer')
 .addEventListener('click', (event) => {
     const target = event.target;
+
+    console.log(target);
    
     event.preventDefault(event);
     if((target.matches('.card') || target.matches('.cardHeader') || target.matches('.postTextArea')) && document.location.pathname === '/dashboard'){
         const cards = document.querySelectorAll('.card');
+        console.log('howdy');
 
         cards.forEach((card) => {
+            console.log(target.parentNode, 'hello');
             if(target.dataset.post_id === card.getAttribute('data-post_id') 
             || target.parentNode.dataset.post_id === card.getAttribute('data-post_id')
             || target.parentNode.parentNode.dataset.post_id === card.getAttribute('data-post_id')){
@@ -136,10 +140,16 @@ document
                 card.setAttribute('style', 'cursor: unset');
             }
         });
-    } else if(target.matches('.addCommentToggle')){
-        target.parentNode.parentNode.childNodes[9].setAttribute('style', 'display: flex');
+    } else if(target.matches('.addCommentToggle') || target.matches('.addCommentToggleHome')){
+        console.log( target.parentNode.childNodes, 'add comment toggle');
+        if(document.location.pathname === '/dashboard') {
+            target.parentNode.childNodes[11].setAttribute('style', 'display: flex');
+        } else if (document.location.pathname === '/'){
+            target.parentNode.childNodes[9].setAttribute('style', 'display: flex');
+        }
         target.setAttribute('style', 'display: none');
     } else if(target.matches('.addCommentBtn')){
+        console.log('submit comment');
         addCommentFn(event);
     } else if(target.matches('.deletePost')){
         deletePost(event);
