@@ -167,6 +167,7 @@ input {
 #cardContainer{
     display: flex;
     flex-direction: column;
+    width: 100vw;
 }
 
 .card{

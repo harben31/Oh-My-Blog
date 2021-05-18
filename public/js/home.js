@@ -154,7 +154,6 @@ document
         });
         //toggles the comment text input and submit button when clicked
     } else if(target.matches('.addCommentToggle') || target.matches('.addCommentToggleHome')){
-        console.log( target.parentNode.childNodes, 'add comment toggle');
         //depending on the page the elements are arranged differently
         if(document.location.pathname === '/dashboard') {
             target.parentNode.childNodes[11].setAttribute('style', 'display: flex');
@@ -164,7 +163,6 @@ document
         target.setAttribute('style', 'display: none');
         //submit comment
     } else if(target.matches('.addCommentBtn')){
-        console.log('submit comment');
         addCommentFn(event);
         //delete post
     } else if(target.matches('.deletePost')){

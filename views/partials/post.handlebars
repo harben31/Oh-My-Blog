@@ -30,7 +30,7 @@
                 {{#each post.comments as |comments|}}
                     <div class="commentWrap">
                         <div class="commentsHeaderWrap">
-                            <p class='commentAuthor'>{{post.user.name}} commented on {{format_date comments.createdAt}}</p>
+                            <p class='commentAuthor'>{{comments.user.name}} commented on {{format_date comments.createdAt}}</p>
                         </div>
                         <p class='commentText'>{{comments.comment_main_text}}</p>
                     </div>
