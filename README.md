@@ -2,6 +2,7 @@
 Table of Contents:
 * [Contributors:](#Contributors)
 * [Description](#Description)
+* [Preview](#Preview)
 * [Deployed_Site](#Deployed_Site)
 * [Technologies_used](#Technologies_used)
 * [Usage](#Usage)
@@ -13,6 +14,9 @@ Benjamin Harris
 
 ## Description:
 An app for users to view and create posts and comments presumably about tech.
+
+## Preview
+![Screenshot](public/images/Oh.My.Blog.gif)
 
 ## Deployed_Site
 [Oh.   My.   Blog.](https://arcane-escarpment-20008.herokuapp.com/)
