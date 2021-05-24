@@ -16,7 +16,7 @@ Benjamin Harris
 An app for users to view and create posts and comments presumably about tech.
 
 ## Preview
-![Screenshot](public/images/Oh.My.Blog.gif)
+![Screenshot](public/images/OhMyBlogSm.gif)
 
 ## Deployed_Site
 [Oh.   My.   Blog.](https://arcane-escarpment-20008.herokuapp.com/)
