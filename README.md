@@ -1,4 +1,4 @@
-# Tech Blog
+# Oh.   My.   Blog.
 Table of Contents:
 * [Contributors:](#Contributors)
 * [Description](#Description)
@@ -15,7 +15,7 @@ Benjamin Harris
 An app for users to view and create posts and comments presumably about tech.
 
 ## Deployed_Site
-[The Tech Blog!](https://arcane-escarpment-20008.herokuapp.com/)
+[Oh.   My.   Blog.](https://arcane-escarpment-20008.herokuapp.com/)
 
 ## Technologies_used:
 * CSS
