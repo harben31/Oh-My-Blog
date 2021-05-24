@@ -40,7 +40,7 @@ Upon navigation to the url the user will see blog posts made by all users and co
 
 
 ## License-Info:
-None
+[MIT License](https://opensource.org/licenses/MIT)
 
 ## Questions:
 * Email: [harben31@gmail.com](mailto:harben31@gmail.com)
